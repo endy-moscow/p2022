@@ -2,7 +2,9 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Preload } from '@react-three/drei'
 import useStore from '@/helpers/store'
 import { useEffect, useRef } from 'react'
-import { MotionCanvas } from 'framer-motion-3d'
+import { MotionCanvas, motion } from 'framer-motion-3d'
+import { MotionConfig } from "framer-motion";
+import { transition } from '@/settings'
 
 
 const LControl = () => {
@@ -17,6 +19,7 @@ const LControl = () => {
   // @ts-ignore
   return <OrbitControls ref={control} domElement={dom.current} />
 }
+
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
 
@@ -32,8 +35,10 @@ const LCanvas = ({ children }) => {
       onCreated={(state) => state.events.connect(dom.current)}
     >
       {/* <LControl /> */}
-      <Preload all />
-      {children}
+      <MotionConfig transition={transition}>
+        <Preload all />
+        {children}
+      </MotionConfig>
     </MotionCanvas>
   )
 }
