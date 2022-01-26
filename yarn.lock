@@ -950,7 +950,7 @@
   dependencies:
     "commander" "^2.15.1"
 
-"@emotion/is-prop-valid@^0.8.8":
+"@emotion/is-prop-valid@^0.8.2", "@emotion/is-prop-valid@^0.8.8":
   "integrity" "sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA=="
   "resolved" "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz"
   "version" "0.8.8"
@@ -1160,10 +1160,10 @@
     "utility-types" "^3.10.0"
     "zustand" "^3.5.13"
 
-"@react-three/fiber@^7.0.21", "@react-three/fiber@>=6.0":
-  "integrity" "sha512-hs+5y6Z8ZQcWGzZN8kMRmSRbztozuQj8tvU22IHshFSq2p23JIFwiSy/z+WYSVWrAvOCRo1NxVvOFC6XI4X3hQ=="
-  "resolved" "https://registry.npmjs.org/@react-three/fiber/-/fiber-7.0.21.tgz"
-  "version" "7.0.21"
+"@react-three/fiber@^7.0.23", "@react-three/fiber@^7.0.25", "@react-three/fiber@>=6.0":
+  "integrity" "sha512-d4XudHlfSYhiMnA8E6HWK5UPr99SdQrg/wTNs2y/sjyqUMAa89WP62rsGUohGTN38qIk/c1DgaG/zSQKXEC6XA=="
+  "resolved" "https://registry.npmjs.org/@react-three/fiber/-/fiber-7.0.25.tgz"
+  "version" "7.0.25"
   dependencies:
     "@babel/runtime" "^7.13.10"
     "react-merge-refs" "^1.1.0"
@@ -1175,6 +1175,13 @@
     "use-asset" "^1.0.4"
     "utility-types" "^3.10.0"
     "zustand" "^3.5.1"
+
+"@react-three/flex@^0.7.0":
+  "integrity" "sha512-Cim/9u6BYuieyZ2NXbE4nbNOqWIyOlT62qlFEQsh6SoMJFde0pBICZupgRlI5VkWX6c2aMXoFkLTxlX6AEmsjQ=="
+  "resolved" "https://registry.npmjs.org/@react-three/flex/-/flex-0.7.0.tgz"
+  "version" "0.7.0"
+  dependencies:
+    "yoga-layout-prebuilt" "^1.9.6"
 
 "@rollup/plugin-node-resolve@^7.1.1":
   "integrity" "sha512-RxtSL3XmdTAE2byxekYLnx+98kEUOrPHF/KRVjLH+DEIHy6kjIw7YINQzn+NXiH/NTrQLAwYs0GWB+csWygA9Q=="
@@ -1269,6 +1276,11 @@
   "version" "0.0.8"
   dependencies:
     "@types/node" "*"
+
+"@types/yoga-layout@1.9.2":
+  "integrity" "sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw=="
+  "resolved" "https://registry.npmjs.org/@types/yoga-layout/-/yoga-layout-1.9.2.tgz"
+  "version" "1.9.2"
 
 "@typescript-eslint/parser@^5.0.0":
   "integrity" "sha512-JsXBU+kgQOAgzUn2jPrLA+Rd0Y1dswOlX3hp8MuRO1hQDs6xgHtbCXEiAu7bz5hyVURxbXcA2draasMbNqrhmg=="
@@ -3429,6 +3441,34 @@
   "resolved" "https://registry.npmjs.org/fraction.js/-/fraction.js-4.1.2.tgz"
   "version" "4.1.2"
 
+"framer-motion-3d@^6.2.3":
+  "integrity" "sha512-OwdPmdGfSIAdJP1eQpgUr3e2tc9Tsku0Ga8se3efGaiFoZlc1xrcB65rjKc0jxwu1QEY6FVS0GaC9xjkEYV2Gg=="
+  "resolved" "https://registry.npmjs.org/framer-motion-3d/-/framer-motion-3d-6.2.3.tgz"
+  "version" "6.2.3"
+  dependencies:
+    "framer-motion" "^6.2.3"
+    "react-merge-refs" "^1.1.0"
+
+"framer-motion@^6.2.3":
+  "integrity" "sha512-2afb2KvqFi5bEgyKEVNm/RGvMThHbWvHPvdJMmm9DR+Lg2tvCmc9o459gQ20tNxLoRUmCGF8bKtm9lvPlqxh2Q=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-6.2.3.tgz"
+  "version" "6.2.3"
+  dependencies:
+    "framesync" "6.0.1"
+    "hey-listen" "^1.0.8"
+    "popmotion" "11.0.3"
+    "style-value-types" "5.0.0"
+    "tslib" "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
+"framesync@6.0.1":
+  "integrity" "sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA=="
+  "resolved" "https://registry.npmjs.org/framesync/-/framesync-6.0.1.tgz"
+  "version" "6.0.1"
+  dependencies:
+    "tslib" "^2.1.0"
+
 "from2@^2.1.0", "from2@^2.3.0":
   "integrity" "sha1-i/tVAr3kpNNs/e6gB/zKIdfjgq8="
   "resolved" "https://registry.npmjs.org/from2/-/from2-2.3.0.tgz"
@@ -3827,6 +3867,11 @@
   "integrity" "sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ=="
   "resolved" "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
   "version" "1.1.0"
+
+"hey-listen@^1.0.8":
+  "integrity" "sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q=="
+  "resolved" "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz"
+  "version" "1.0.8"
 
 "hmac-drbg@^1.0.1":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
@@ -5206,6 +5251,16 @@
   "resolved" "https://registry.npmjs.org/platform/-/platform-1.3.6.tgz"
   "version" "1.3.6"
 
+"popmotion@11.0.3":
+  "integrity" "sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA=="
+  "resolved" "https://registry.npmjs.org/popmotion/-/popmotion-11.0.3.tgz"
+  "version" "11.0.3"
+  dependencies:
+    "framesync" "6.0.1"
+    "hey-listen" "^1.0.8"
+    "style-value-types" "5.0.0"
+    "tslib" "^2.1.0"
+
 "postcss-js@^3.0.3":
   "integrity" "sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw=="
   "resolved" "https://registry.npmjs.org/postcss-js/-/postcss-js-3.0.3.tgz"
@@ -5439,7 +5494,7 @@
   dependencies:
     "prop-types" "^15.6.0"
 
-"react-dom@^17.0.2", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>= 16.8.0", "react-dom@>=16.13", "react-dom@>=17.0":
+"react-dom@^17.0.2", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>= 16.8.0", "react-dom@>=16.13", "react-dom@>=16.8 || ^17.0.0", "react-dom@>=17.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -5494,7 +5549,7 @@
   dependencies:
     "debounce" "^1.2.1"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.13", "react@>=16.8", "react@>=17.0", "react@17.0.2":
+"react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.13", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=17.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -6320,6 +6375,14 @@
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
 
+"style-value-types@5.0.0":
+  "integrity" "sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA=="
+  "resolved" "https://registry.npmjs.org/style-value-types/-/style-value-types-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "hey-listen" "^1.0.8"
+    "tslib" "^2.1.0"
+
 "styled-components@>= 2":
   "integrity" "sha512-++4iHwBM7ZN+x6DtPPWkCI4vdtwumQ+inA/DdAsqYd4SVgUKJie5vXyzotA00ttcFdQkCng7zc6grwlfIfw+lw=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.3.tgz"
@@ -6522,7 +6585,7 @@
     "potpack" "^1.0.1"
     "zstddec" "^0.0.2"
 
-"three@^0.135.0", "three@>= 0.123.0", "three@>=0.103.0", "three@>=0.126", "three@>=0.128.0":
+"three@^0.135.0", "three@>= 0.123.0", "three@>=0.103.0", "three@>=0.126", "three@>=0.128.0", "three@>=0.133":
   "integrity" "sha512-kuEpuuxRzLv0MDsXai9huCxOSQPZ4vje6y0gn80SRmQvgz6/+rI0NAvCRAw56zYaWKMGMfqKWsxF9Qa2Z9xymQ=="
   "resolved" "https://registry.npmjs.org/three/-/three-0.135.0.tgz"
   "version" "0.135.0"
@@ -6644,6 +6707,11 @@
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
+
+"tslib@^2.1.0":
+  "integrity" "sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
+  "version" "2.3.1"
 
 "tsutils@^3.21.0":
   "integrity" "sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA=="
@@ -7181,6 +7249,13 @@
   "integrity" "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q=="
   "resolved" "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   "version" "0.1.0"
+
+"yoga-layout-prebuilt@^1.9.6":
+  "integrity" "sha512-YnOmtSbv4MTf7RGJMK0FvZ+KD8OEe/J5BNnR0GHhD8J/XcG/Qvxgszm0Un6FTHWW4uHlTgP0IztiXQnGyIR45g=="
+  "resolved" "https://registry.npmjs.org/yoga-layout-prebuilt/-/yoga-layout-prebuilt-1.10.0.tgz"
+  "version" "1.10.0"
+  dependencies:
+    "@types/yoga-layout" "1.9.2"
 
 "zstddec@^0.0.2":
   "integrity" "sha512-DCo0oxvcvOTGP/f5FA6tz2Z6wF+FIcEApSTu0zV5sQgn9hoT5lZ9YRAKUraxt9oP7l4e8TnNdi8IZTCX6WCkwA=="

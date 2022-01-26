@@ -1,8 +1,9 @@
 import useStore from '@/helpers/store'
 import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
+import { Sphere } from '@react-three/drei'
 
-const BoxComponent = ({ route }) => {
+const SphereComponent = ({ route }) => {
   const router = useStore((s) => s.router)
   // This reference will give us direct access to the THREE.Mesh object
   const mesh = useRef(null)
@@ -17,19 +18,18 @@ const BoxComponent = ({ route }) => {
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <>
-      <mesh
+      <Sphere
         ref={mesh}
         onClick={() => router.push(route)}
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
         scale={hovered ? 1.1 : 1}
-      >
-        <boxBufferGeometry args={[1, 1, 1]} />
-        <meshPhysicalMaterial color={route === '/' ? 'orange' : 'hotpink'} />
-      </mesh>
+        color={route === '/' ? 'orange' : 'hotpink'}>
+        <meshBasicMaterial attach="material" color="hotpink" />
+      </Sphere>
       <directionalLight position={[5, 5, 5]} />
       <ambientLight />
     </>
   )
 }
-export default BoxComponent
+export default SphereComponent

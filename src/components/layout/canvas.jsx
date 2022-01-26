@@ -2,6 +2,8 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Preload } from '@react-three/drei'
 import useStore from '@/helpers/store'
 import { useEffect, useRef } from 'react'
+import { MotionCanvas } from 'framer-motion-3d'
+
 
 const LControl = () => {
   const dom = useStore((state) => state.dom)
@@ -19,7 +21,9 @@ const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
 
   return (
-    <Canvas
+    <MotionCanvas 
+      dpr={[1, 2]} 
+      shadows
       mode='concurrent'
       style={{
         position: 'absolute',
@@ -27,10 +31,10 @@ const LCanvas = ({ children }) => {
       }}
       onCreated={(state) => state.events.connect(dom.current)}
     >
-      <LControl />
+      {/* <LControl /> */}
       <Preload all />
       {children}
-    </Canvas>
+    </MotionCanvas>
   )
 }
 

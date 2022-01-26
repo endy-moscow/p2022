@@ -5,6 +5,7 @@ import useStore from '@/helpers/store'
 import { shaderMaterial } from '@react-three/drei'
 import guid from 'short-uuid'
 
+
 import vertex from './glsl/shader.vert'
 import fragment from './glsl/shader.frag'
 
@@ -44,7 +45,7 @@ const Shader = (props) => {
       ref={meshRef}
       scale={hovered ? 1.1 : 1}
       onClick={() => {
-        router.push(`/box`)
+        router.push(`/sphere`)
       }}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
