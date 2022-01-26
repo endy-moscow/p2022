@@ -17,22 +17,31 @@ const DOM = () => {
 // canvas components goes here
 const R3F = () => {
   return (
-    <> 
+    <>
+      <motion.mesh
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 1},
+        }}
+        onHoverStart={e => console.log('onHoverStart!')}
+        onHoverEnd={e => console.log('onHoverEnd!')}
+        receiveShadow
+        castShadow
+        rotation-x={-Math.PI / 2}
+        position-y={2}
+        scale={[1, 1, 1]}
+        animate={{ opacity:0 }}
+        >
+        <boxBufferGeometry />
+        <meshStandardMaterial color="#e4be00" />
+      </motion.mesh> 
       <Flex>
+      
         <Box>
           <Torus/>
         </Box>
         <Box>
-          <motion.mesh
-            receiveShadow
-            castShadow
-            rotation-x={-Math.PI / 2}
-            position-y={1}
-            scale={[1, 1, 1]}
-          >
-            <boxBufferGeometry />
-            <meshStandardMaterial color="#e4be00" />
-          </motion.mesh>
+         
         </Box>
         <Box>
           <Shader /> 
