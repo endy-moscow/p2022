@@ -7262,7 +7262,7 @@
   "resolved" "https://registry.npmjs.org/zstddec/-/zstddec-0.0.2.tgz"
   "version" "0.0.2"
 
-"zustand@^3.5.1", "zustand@^3.5.13":
-  "integrity" "sha512-y4755cIzJHQFEHgTQ5cHrlHdmXMxm5N3DU05Q27yT6rK4lKs2336t5IsAz5q9/GRaoEz6o8SiCOPDhZd5BnneA=="
-  "resolved" "https://registry.npmjs.org/zustand/-/zustand-3.6.6.tgz"
-  "version" "3.6.6"
+"zustand@^3.5.1", "zustand@^3.5.13", "zustand@^3.6.9":
+  "integrity" "sha512-OvDNu/jEWpRnEC7k8xh8GKjqYog7td6FZrLMuHs/IeI8WhrCwV+FngVuwMIFhp5kysZXr6emaeReMqjLGaldAQ=="
+  "resolved" "https://registry.npmjs.org/zustand/-/zustand-3.6.9.tgz"
+  "version" "3.6.9"
