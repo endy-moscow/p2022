@@ -1,28 +1,14 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload } from '@react-three/drei'
+import { Preload, CameraShake } from '@react-three/drei'
 import useStore from '@/helpers/store'
 import { useEffect, useRef } from 'react'
 import { MotionCanvas } from 'framer-motion-3d'
 import { MotionConfig } from "framer-motion";
 import { transition } from '@/settings'
-
-
-// const LControl = () => {
-//   const dom = useStore((state) => state.dom)
-//   const control = useRef(null)
-
-//   useEffect(() => {
-//     if (control) {
-//       dom.current.style['touch-action'] = 'none'
-//     }
-//   }, [dom, control])
-//   // @ts-ignore
-//   return <OrbitControls ref={control} domElement={dom.current} />
-// }
+import Shake from '@/helpers/cameraShake';
 
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
-
+  
   return (
     <MotionCanvas 
       dpr={[1, 2]} 
@@ -31,9 +17,9 @@ const LCanvas = ({ children }) => {
       mode='concurrent'
       onCreated={(state) => state.events.connect(dom.current)}
     >
-      {/* <LControl /> */}
       <MotionConfig transition={transition}>
         <Preload all />
+        <Shake intensity={0}/>
         {children}
       </MotionConfig>
     </MotionCanvas>
