@@ -1,7 +1,10 @@
-import { Image, useScroll, MeshWobbleMaterial, useTexture } from '@react-three/drei'
+import * as THREE from "three"
+import { Image, useScroll, MeshWobbleMaterial, useTexture, Plane } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef, useState, useEffect } from 'react'
 import data from "@/components/canvas/imageData"
+import { motion as motion3d } from 'framer-motion-3d'
+import { Flex, Box } from '@react-three/flex'
 
 export default function Images() {
   const { width: w, height: h } = useThree((state) => state.viewport)
@@ -9,15 +12,13 @@ export default function Images() {
   const scrldata = useScroll()
   const group = useRef()
   const ref = useRef()
-
   const texture = useTexture(data[0])
-  const texture1 = useTexture(data[1])
   
 
   useFrame(() => {
     group.current.children[0].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
-    group.current.children[1].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
-    group.current.children[2].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 3
+    // group.current.children[1].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
+    // group.current.children[2].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 3
     group.current.children[3].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 2
     group.current.children[4].material.zoom = 1 + scrldata.range(1.25 / 3, 1 / 3) / 1
     group.current.children[5].material.zoom = 1 + scrldata.range(1.8 / 3, 1 / 3) / 3
@@ -28,18 +29,32 @@ export default function Images() {
   useEffect(() => {
     document.title = `useEffect worked here`;
     console.log(scrldata.delta)
-  });
+  })
   return (
     <group ref={group}>
-      <mesh
+      <motion3d.mesh
         onPointerOver={() => {hover(true), console.log('onPointerOver')}} 
         onPointerOut={() => {hover(false), console.log('onPointerOut')}}
+        whileHover={{ }}
+        animate={{ scale: 2, x: 3 }}
+        transition={{
+          times: [0, 0.5, 0.5, 1],
+          easeIn: [0, 0.33, 0.66, 1],
+          duration: 7,
+        }}
         position={[0, 0, 0]} 
         scale={[w, h , 1]}>
         <planeGeometry args={[1, 1, 16, 16]} />
-        <MeshWobbleMaterial map={texture}  ref={ref} speed={0.1}/>
-      </mesh>
-  
+        <motion3d.meshStandardMaterial map={texture} ref={ref} />
+      </motion3d.mesh>
+      <Flex width={w} justifyContent="center" alignItems="center" flexDirection="row">
+        <Box width="auto" centerAnchor>
+          <Plane/>
+        </Box>
+        <Box width="auto"centerAnchor>
+          <Plane/>
+        </Box>
+      </Flex>     
       <Image url={data[0]} scale={[w/2, h/2, 1]} position={[w, -h * 1, 0]} />
       <Image url={data[1]} scale={[w, h, 1]} position={[-w / 4, -h * 1, 0]} />
       <Image url={data[2]} scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} />
