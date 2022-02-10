@@ -1,35 +1,40 @@
-import { Preload } from '@react-three/drei'
+import { Preload, useProgress, Html, softShadows} from '@react-three/drei'
 import useStore from '@/helpers/store'
-import { MotionCanvas } from 'framer-motion-3d'
-import { MotionConfig } from "framer-motion";
-import { transition } from '@/settings'
-import Shake from '@/helpers/cameraShake';
+import Shake from '@/helpers/cameraShake'
 import { Perf } from 'r3f-perf'
-import { Canvas } from '@react-three/fiber';
-import useMeasure from 'react-use-measure';
+import { Canvas } from '@react-three/fiber'
+import { Suspense, useEffect } from 'react'
+
+// import { MotionCanvas, LayoutCamera } from 'framer-motion-3d'
+// import { useMotionValue } from 'framer-motion'
+
+function Loader() {
+  const { progress } = useProgress()
+  return (
+    <Html center>{progress} % loaded</Html>
+  )
+}
+
+softShadows()
 
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
-
-  
   return (
-    
-      <Canvas 
-        dpr={[1, 2]} 
-        camera={{ position: [0, 0, 10], near: 0.1, far: 1000 }}
-        shadows
-        mode='concurrent'
-        onCreated={(state) => state.events.connect(dom.current)}
-      >
+    <Canvas 
+      dpr={[1, 2]} 
+      camera={{ position: [0, 0, 10], near: 0.1, far: 1000 }}
+      shadows
+      mode='concurrent'
+      onCreated={(state) => state.events.connect(dom.current)}
+    >
+      <Suspense fallback={<Loader />}>
+        {/* <Preload all /> */}
+        <Shake />
         
-          <Preload all />
-          <Shake />
-          <Perf />
-          {children}
-        
-      </Canvas>
-    
-
+        <Perf />
+        {children} 
+      </Suspense>
+    </Canvas>
   )
 }
 

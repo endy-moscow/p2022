@@ -38,9 +38,9 @@ export default function Images() {
         whileHover={{ }}
         animate={{ scale: 2, x: 3 }}
         transition={{
-          times: [0, 0.5, 0.5, 1],
-          easeIn: [0, 0.33, 0.66, 1],
-          duration: 7,
+          times: [0, 0.5, 1],
+          easeIn: [0, 0.5, 1],
+          duration: 2,
         }}
         position={[0, 0, 0]} 
         scale={[w, h , 1]}>
