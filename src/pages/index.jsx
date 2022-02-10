@@ -2,7 +2,7 @@
 import { Flex, Box, useReflow} from '@react-three/flex'
 
 import dynamic from 'next/dynamic'
-import { Scroll, ScrollControls, useScroll, SpotLight } from '@react-three/drei'
+import { Scroll, ScrollControls, useScroll } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef } from 'react'
 
@@ -42,7 +42,6 @@ const Grid = () => {
         damping={1} // Friction, higher is faster (default: 4)
         horizontal={false} // Can also scroll horizontally (default: false)
         infinite={false} >
-        <ambientLight/>
         
         <Scroll >
           <Images/>

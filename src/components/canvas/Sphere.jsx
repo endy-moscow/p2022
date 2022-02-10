@@ -29,6 +29,7 @@ const SphereComponent = ({ route }) => {
       </Sphere>
       <directionalLight position={[5, 5, 5]} />
       <ambientLight />
+      
     </>
   )
 }
