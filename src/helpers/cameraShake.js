@@ -13,7 +13,11 @@ const config = {
 }
 
 const Shake = () => {
+<<<<<<< HEAD
   return <CameraShake intensity={1} {...config} />
+=======
+  return <CameraShake intensity={0} {...config} />
+>>>>>>> 9bdd0e8a717c2e59f0e42457e46e665d286fab73
 }
 
 export default Shake

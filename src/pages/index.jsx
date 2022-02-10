@@ -1,10 +1,14 @@
 // import * as THREE from "three"
 import { Flex, Box, useReflow} from '@react-three/flex'
-
 import dynamic from 'next/dynamic'
+<<<<<<< HEAD
 import { Scroll, ScrollControls, useScroll } from '@react-three/drei'
+=======
+import { Plane, Scroll, ScrollControls, useScroll, SpotLight } from '@react-three/drei'
+>>>>>>> 9bdd0e8a717c2e59f0e42457e46e665d286fab73
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef } from 'react'
+// import Images from '@/components/canvas/Images'
 
 const Images = dynamic(() => import('@/components/canvas/Images'), {
   ssr: false,
@@ -18,7 +22,7 @@ const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
 
 const DOM = () => {
   return (
-    <div>div</div>
+    <div className='text-xl blue'>div</div>
   )
 }
 
@@ -48,7 +52,7 @@ const Grid = () => {
         </Scroll>
         
         <Scroll html >
-          <h1 className='columns-1 z-50' >all</h1>
+          <h1>all</h1>
           <h1 style={{ position: 'absolute', top: '180vh', left: '10vw' }}>hail</h1>
           <h1 style={{ position: 'absolute', top: '260vh', right: '10vw' }}>thee,</h1>
           <h1 style={{ position: 'absolute', top: '350vh', left: '10vw' }}>thoth</h1>
