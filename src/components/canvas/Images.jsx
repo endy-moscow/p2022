@@ -1,50 +1,28 @@
 import * as THREE from "three"
-<<<<<<< HEAD
-import { Image, useScroll, MeshWobbleMaterial, useTexture, PresentationControls } from '@react-three/drei'
+import { Image, Scroll, ScrollControls, useScroll, MeshWobbleMaterial, useTexture, PresentationControls, useCamera } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef, useState, useEffect } from 'react'
 import data from "@/components/canvas/imageData"
-import { Camera } from "three"
-=======
-import { Image, useScroll, MeshWobbleMaterial, useTexture, Plane } from '@react-three/drei'
-import { useFrame, useThree } from '@react-three/fiber'
-import { useRef, useState, useEffect } from 'react'
-import data from "@/components/canvas/imageData"
-import { motion as motion3d } from 'framer-motion-3d'
-import { Flex, Box } from '@react-three/flex'
->>>>>>> 9bdd0e8a717c2e59f0e42457e46e665d286fab73
 
-export default function Images() {
+function Images() {
   const { width: w, height: h } = useThree((state) => state.viewport)
   const [hovered, hover] = useState(false)
   const scrldata = useScroll()
-
   const group = useRef()
   const ref = useRef()
-<<<<<<< HEAD
   const mesh = useRef()
-
   const texture = useTexture(data[0])
   const texture1 = useTexture(data[1])
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
-    group.current.children[0].rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8
-    group.current.children[0].rotation.y = Math.sin(t / 4) / 8
+    // group.current.children[0].rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8
+    // group.current.children[0].rotation.y = Math.sin(t / 4) / 8
     group.current.children[0].rotation.z = (1 + Math.sin(t / 1.5)) / 20
     group.current.children[0].position.y = (1 + Math.sin(t / 1.5)) / 10
     group.current.children[0].position.set( 0,0,0)
     group.current.children[1].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
     group.current.children[2].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 3
-=======
-  const texture = useTexture(data[0])
-  
-
-  useFrame(() => {
-    group.current.children[0].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
-    // group.current.children[1].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
-    // group.current.children[2].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 3
->>>>>>> 9bdd0e8a717c2e59f0e42457e46e665d286fab73
     group.current.children[3].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 2
     group.current.children[4].material.zoom = 1 + scrldata.range(1.25 / 3, 1 / 3) / 1
     group.current.children[5].material.zoom = 1 + scrldata.range(1.8 / 3, 1 / 3) / 3
@@ -52,17 +30,17 @@ export default function Images() {
     group.current.children[6].material.zoom = 1 + (1 - scrldata.range(2 / 3, 1 / 3)) / 3
     // ref.current.distort = THREE.MathUtils.lerp(ref.current.distort, hovered ? 0.2 : 0, hovered ? 0.05 : 0.01)
   })
-<<<<<<< HEAD
-
   return (
     <group ref={group}>
       <PresentationControls
-        global
-        config={{ mass: 2, tension: 500 }}
-        snap={{ mass: 4, tension: 1500 }}
-        rotation={[0, 0.3, 0]}
-        polar={[-Math.PI / 3, Math.PI / 3]}
-        azimuth={[-Math.PI / 1.4, Math.PI / 2]}>
+         cursor={true} // Whether to toggle cursor style on drag
+         snap={true} // Snap-back to center (can also be a spring config)
+         speed={.3} // Speed factor
+         zoom={1} // Zoom factor when half the polar-max is reached
+         rotation={[0, 0, 0]} // Default rotation
+         polar={[0, 0 ]} // Vertical limits
+         azimuth={[-Infinity, Infinity]} // Horizontal limits
+        >
         <mesh
           onPointerOver={() => {hover(true), console.log('onPointerOver')}} 
           onPointerOut={() => {hover(false), console.log('onPointerOut')}}
@@ -70,7 +48,7 @@ export default function Images() {
           scale={[w, h , 1]}>
           
           <planeGeometry args={[1, 1, 16, 16]} />
-          <MeshWobbleMaterial map={texture}  ref={ref} speed={0.1}/>
+          <MeshWobbleMaterial map={texture}  ref={ref} speed={1}/>
         </mesh>
       </PresentationControls>
       <Image url={data[1]} scale={[w/2, h/2, 1]} />
@@ -81,45 +59,41 @@ export default function Images() {
       <Image url={data[6]} scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} />
       <Image url={data[7]} scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} />
       <Image url={data[8]} scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} />
-=======
-  useEffect(() => {
-    document.title = `useEffect worked here`;
-    console.log(scrldata.delta)
-  })
-  return (
-    <group ref={group}>
-      <motion3d.mesh
-        onPointerOver={() => {hover(true), console.log('onPointerOver')}} 
-        onPointerOut={() => {hover(false), console.log('onPointerOut')}}
-        whileHover={{ }}
-        animate={{ scale: 2, x: 3 }}
-        transition={{
-          times: [0, 0.5, 1],
-          easeIn: [0, 0.5, 1],
-          duration: 2,
-        }}
-        position={[0, 0, 0]} 
-        scale={[w, h , 1]}>
-        <planeGeometry args={[1, 1, 16, 16]} />
-        <motion3d.meshStandardMaterial map={texture} ref={ref} />
-      </motion3d.mesh>
-      <Flex width={w} justifyContent="center" alignItems="center" flexDirection="row">
-        <Box width="auto" centerAnchor>
-          <Plane/>
-        </Box>
-        <Box width="auto"centerAnchor>
-          <Plane/>
-        </Box>
-      </Flex>     
-      <Image url={data[0]} scale={[w/2, h/2, 1]} position={[w, -h * 1, 0]} />
-      <Image url={data[1]} scale={[w, h, 1]} position={[-w / 4, -h * 1, 0]} />
-      <Image url={data[2]} scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} />
-      <Image url={data[3]} scale={[w / 5, w / 5, 1]} position={[w / 10, -h * 1.75, 0]} />
-      <Image url={data[4]} scale={[w / 3, w / 3, 1]} position={[-w / 4, -h * 2, 0]} />
-      <Image url={data[5]} scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} />
-      <Image url={data[6]} scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} />
-      <Image url={data[7]} scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} />
->>>>>>> 9bdd0e8a717c2e59f0e42457e46e665d286fab73
     </group>
   )
 }
+
+const Grid = () => {
+  const { viewport } = useThree();
+  const data = useScroll()
+  const ref = useRef()
+  return(
+    <>
+      <ScrollControls
+        pages={6} // Each page takes 100% of the height of the canvas
+        distance={1} // A factor that increases scroll bar travel (default: 1)
+        damping={1} // Friction, higher is faster (default: 4)
+        horizontal={false} // Can also scroll horizontally (default: false)
+        infinite={false} >
+        
+        <Scroll >
+          <Images/>
+        </Scroll>
+        
+        <Scroll html >
+          <h1>all</h1>
+          <h1 style={{ position: 'absolute', top: '180vh', left: '10vw' }}>hail</h1>
+          <h1 style={{ position: 'absolute', top: '260vh', right: '10vw' }}>thee,</h1>
+          <h1 style={{ position: 'absolute', top: '350vh', left: '10vw' }}>thoth</h1>
+          <h1 style={{ position: 'absolute', top: '450vh', right: '10vw' }}>
+            her
+            <br />
+            mes.
+          </h1>
+        </Scroll>
+      </ScrollControls>
+    </>
+  )
+}
+
+export default Grid

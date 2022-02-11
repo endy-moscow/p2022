@@ -8,7 +8,6 @@ export default function CameraControls() {
   const camera = useRef()
   const scroll = useScroll()
   useFrame(() => {
-    console.log(scroll) // null
     camera.current.position.z
   })
   return(
