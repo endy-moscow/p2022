@@ -1,11 +1,8 @@
 
-import * as THREE from "three"
 import { Preload, ContactShadows, SpotLight } from '@react-three/drei'
 import useStore from '@/helpers/store'
-import { useEffect, useRef } from 'react'
-import Shake from '@/helpers/cameraShake';
-import { Canvas, useFrame } from '@react-three/fiber';
-import CameraControls from "../canvas/cameraControls";
+import { Canvas, useFrame } from '@react-three/fiber'
+import CameraControls from "../canvas/cameraControls"
 
 function Loader() {
   const { progress } = useProgress()

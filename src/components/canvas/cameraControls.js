@@ -1,4 +1,4 @@
-import Shake from "@/helpers/cameraShake"
+import Shake from "@/components/canvas/cameraShake"
 import { PerspectiveCamera, OrbitControls, useScroll } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
@@ -14,7 +14,7 @@ export default function CameraControls() {
     <>
       <PerspectiveCamera ref={camera} position={[0, 1, 10]} makeDefault />
       <Shake/>
-      <OrbitControls
+      {/* <OrbitControls
         enableZoom={true}
         zoomSpeed={2}
         rotateSpeed={0}
@@ -29,7 +29,7 @@ export default function CameraControls() {
           RIGHT: 'd', // right arrow
           BOTTOM: 's' // down arrow
         }}
-      />
+      /> */}
     </>
   )
 }

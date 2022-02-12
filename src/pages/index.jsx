@@ -12,9 +12,15 @@ const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
   ssr: false,
 })
 
-const DOM = () => {
+const DOM = (state) => {
+  function handleClick()  {
+    return (
+      console.log(state)
+    )
+  }
+  console.log(state)
   return (
-    <div className='text-xl blue'>div</div>
+    <button onClick={() => handleClick()} className='text-xl blue'>button</button>
   )
 }
 
