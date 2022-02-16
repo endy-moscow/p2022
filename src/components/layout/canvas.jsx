@@ -1,5 +1,5 @@
 
-import { Preload, ContactShadows, SpotLight } from '@react-three/drei'
+import { Preload, ContactShadows, SpotLight, Html } from '@react-three/drei'
 import useStore from '@/helpers/store'
 import { Canvas, useFrame } from '@react-three/fiber'
 import CameraControls from "../canvas/cameraControls"
