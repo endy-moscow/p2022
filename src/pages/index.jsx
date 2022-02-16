@@ -1,10 +1,7 @@
-
 import dynamic from 'next/dynamic'
-import { Scroll, ScrollControls, useScroll } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import { useRef } from 'react'
+import { Nav } from '@/components/dom/nav'
 
-const Grid = dynamic(() => import('@/components/canvas/Images'), {
+const Project = dynamic(() => import('@/components/canvas/project'), {
   ssr: false,
 })
 
@@ -13,32 +10,15 @@ const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
 })
 
 const DOM = (state) => {
-  function handleClick()  {
-    return (
-      console.log(state)
-    )
-  }
-  console.log(state)
   return (
-    <button onClick={() => handleClick()} className='text-xl blue'>button</button>
+    <Nav/>
   )
 }
 
-function whileHover(event, info) {
-  const x = 1.6
-  console.log ('Hover!')
-  return {
-    scale: x
-  }
-}
-
-
-
-// canvas components goes here
 const R3F = () => {
   return (
     <>
-      <Grid/>
+      <Project/>
     </>
   )
 }
