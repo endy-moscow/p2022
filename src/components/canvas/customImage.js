@@ -2,7 +2,7 @@ import * as THREE from "three"
 import { Sphere, Image, Scroll, ScrollControls, useScroll, MeshWobbleMaterial, useTexture, PresentationControls, Html, Torus } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef, useState, useEffect } from 'react'
-import data from "@/components/canvas/imageData"
+import data from "@/components/canvas/data"
 
 export default function CustomImage() {
   const { width: w, height: h } = useThree((state) => state.viewport)

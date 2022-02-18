@@ -5,50 +5,58 @@ import { useRef, useEffect } from "react"
 import useRouterStore, { useCameraStore } from "@/helpers/store"
 import { Vector3 } from "three"
 
-export default function CameraControls() {
-  // Initial camera position
-  const iniCamPosX = 0
-  const iniCamPosY = 0
-  const iniCamPosZ = 10
+function Camera() {
 
-  // Router store
-  const router = useRouterStore()
-
-  // Camera store
-  const actualCamPosX = useCameraStore(cameraState => cameraState.actualCamPosX)
-  const actualCamPosY = useCameraStore(cameraState => cameraState.actualCamPosY)
-  const actualCamPosZ = useCameraStore(cameraState => cameraState.actualCamPosZ)
-  
-  const targetCamPosX = useCameraStore(cameraState => cameraState.targetCamPosX)
-  const targetCamPosY = useCameraStore(cameraState => cameraState.targetCamPosY)
-  const targetCamPosZ = useCameraStore(cameraState => cameraState.targetCamPosZ)
+  // Camera position from store
+  const cameraPosX = useCameraStore(cameraState => cameraState.cameraPosX)
+  const cameraPosY = useCameraStore(cameraState => cameraState.cameraPosY)
+  const cameraPosZ = useCameraStore(cameraState => cameraState.cameraPosZ)
+  const cameraPosV3 = new Vector3( cameraPosX, cameraPosY, cameraPosZ )
 
 
   const cameraRef = useRef()
-
-  const actualCamPos = new Vector3( actualCamPosX, actualCamPosY, actualCamPosZ )
-  const targetCamPos = new Vector3( targetCamPosX, targetCamPosY, targetCamPosZ )
   
   useFrame(() => {
-    cameraRef.current.position.lerp( actualCamPos, 0.5)
-    // cameraRef.current.position.setlerp(actualCamPos, 0.1)
-    // cameraRef.current.position.set(actualCamPos.lerp(targetCamPos, 0.1))
+    cameraRef.current.position.lerp( cameraPosV3, 0.04)
+  })
+
+  return <PerspectiveCamera ref={cameraRef} makeDefault />
+}
+
+
+export default function CameraControls() {
+  // Camera position from store
+  const cameraPosX = useCameraStore(cameraState => cameraState.cameraPosX)
+  const cameraPosY = useCameraStore(cameraState => cameraState.cameraPosY)
+  const cameraPosZ = useCameraStore(cameraState => cameraState.cameraPosZ)
+  
+  
+  
+  // Router store
+  const router = useRouterStore()
+
+  const cameraPos = new Vector3( cameraPosX, cameraPosY, cameraPosZ )
+  
+  
+  useFrame(() => {
+    // cameraRef.current.position.lerp( cameraPos, 0.04)
+    // cameraRef.current.position.setlerp(cameraPos, 0.1)
+    // cameraRef.current.position.set(cameraPos.lerp(targetPos, 0.1))
     // cameraRef.current.position.lerp(prevCamPos, 0.1)
     // cameraRef.current.updateMatrixWorld()
-    // cameraRef.current.position.set(camPosX, camPosY, camPosZ)
+    // cameraRef.current.position.set(cameraPosX, cameraPosY, cameraPosZ)
   })
    // Side effect
    useEffect(() => {
     console.log( 
-      'actualCamPosX:', actualCamPosX,
-      'actualCamPosY:', actualCamPosY,
-      'actualCamPosZ:', actualCamPosZ
+      'cameraPosX:', cameraPosX,
+      'cameraPosY:', cameraPosY,
+      'cameraPosZ:', cameraPosZ
       )
   });
   return(
     <>
-   
-      <PerspectiveCamera ref={cameraRef} makeDefault />
+      <Camera/> 
       <Shake/>
     </>
   )

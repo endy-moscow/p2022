@@ -1,10 +1,10 @@
-import useStore from '@/helpers/store'
+import useRouterStore from '@/helpers/store'
 import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import { Torus } from '@react-three/drei'
 
 const TorusComponent = ({ route }) => {
-  const router = useStore((s) => s.router)
+  const router = useRouterStore((s) => s.router)
   // This reference will give us direct access to the THREE.Mesh object
   const mesh = useRef(null)
   // Set up state for the hovered and active state
@@ -23,8 +23,7 @@ const TorusComponent = ({ route }) => {
   return (
     <>
       <Torus
-
-        position={[1,2,1]}
+        position={[ 0, 0, -100 ]}
         ref={mesh}
         onClick={() => router.push(route)}
         onPointerOver={() => setHover(true)}

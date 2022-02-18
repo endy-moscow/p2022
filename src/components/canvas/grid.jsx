@@ -2,7 +2,7 @@ import * as THREE from "three"
 import { Sphere, Image, Scroll, ScrollControls, useScroll, MeshWobbleMaterial, useTexture, PresentationControls, Html, Torus } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useRef, useState, useEffect } from 'react'
-import data from "@/components/canvas/imageData"
+import data from "@/components/canvas/data"
 import CustomImage from '@/components/canvas/customImage'
 
 const Grid = () => {
