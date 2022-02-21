@@ -6,7 +6,7 @@ import React, { useRef, useMemo } from 'react'
 import { useGLTF, Merged } from '@react-three/drei'
 
 export default function InstancedModel(props) {
-  const { nodes } = useGLTF('/tube.glb')
+  const { nodes } = useGLTF('/model.glb')
   const instances = useMemo(
     () => ({
       Cylinder: nodes.Cylinder,
@@ -22,12 +22,12 @@ export default function InstancedModel(props) {
 
 function Model({ instances, ...props }) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/tube.glb')
+  const { nodes, materials } = useGLTF('/model.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <instances.Cylinder rotation={[Math.PI / 2, 0, 0]} />
+      <instances.Cylinder />
     </group>
   )
 }
 
-useGLTF.preload('/tube.glb')
+useGLTF.preload('/model.glb')

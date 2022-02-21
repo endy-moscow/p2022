@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 
 
-const Torus = dynamic(() => import('@/components/canvas/Torus'), {
+const Torus = dynamic(() => import('@/components/canvas/torus'), {
   ssr: false,
 })
 

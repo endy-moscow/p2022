@@ -1,9 +1,10 @@
 import * as THREE from "three"
 import { Sphere, Image, Scroll, ScrollControls, useScroll, MeshWobbleMaterial, useTexture, PresentationControls, Html, Torus } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, Suspense } from 'react'
 import data from "@/components/canvas/data"
 import CustomImage from '@/components/canvas/customImage'
+
 
 const Grid = () => {
   const { width: w, height: h } = useThree((state) => state.viewport)
@@ -13,21 +14,8 @@ const Grid = () => {
   const texture = useTexture(data[0])
   console.log(w,h,group,ref,texture)
 
-
   useFrame((state) => {
-    // state.camera.position.z = cameraPos + scrldata.offset*100
-    // update(scrldata.scroll.current*100+10)
-    // const t = state.clock.getElapsedTime()
-    // group.current.children[0].rotation.z = (1 + Math.sin(t / 1.5)) / 50
-    // group.current.children[0].position.z = -2
-    // group.current.children[1].material.zoom = 1 + scrldata.range(0, 1 / 3) / 3
-    // group.current.children[2].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 3
-    // group.current.children[3].material.zoom = 1 + scrldata.range(1.15 / 3, 1 / 3) / 2
-    // group.current.children[4].material.zoom = 1 + scrldata.range(1.25 / 3, 1 / 3) / 1
-    // group.current.children[5].material.zoom = 1 + scrldata.range(1.8 / 3, 1 / 3) / 3
-    // group.current.children[5].material.grayscale = 1 - scrldata.range(1.6 / 3, 1 / 3)
-    // group.current.children[6].material.zoom = 1 + (1 - scrldata.range(2 / 3, 1 / 3)) / 3
-    // ref.current.distort = THREE.MathUtils.lerp(ref.current.distort, hovered ? 1 : 0, hovered ? 0.05 : 0.01)
+
   })
   return (
     <group ref={group}>

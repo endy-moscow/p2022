@@ -13,10 +13,7 @@ const TorusComponent = ({ route }) => {
   useFrame((state, delta) => {
       mesh.current
       ? (mesh.current.rotation.y = mesh.current.rotation.x += 0.01)
-      : null,
-      
-      console.log(1)
-
+      : null
     }
   )
   // Return the view, these are regular Threejs elements expressed in JSX
