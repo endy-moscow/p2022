@@ -16,7 +16,8 @@ function LCanvas({ children }) {
   return (
     <Canvas
       dpr={[1, 2]}
-      shadows
+      colorManagement
+      shadowMap
       mode='concurrent'
       onCreated={(state) => state.events.connect(dom.current)}
     >
