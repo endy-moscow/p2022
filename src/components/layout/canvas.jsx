@@ -3,11 +3,11 @@ import { Preload, ContactShadows, SpotLight, Html } from '@react-three/drei'
 import useRouterStore from '@/helpers/store'
 import { Canvas, useFrame } from '@react-three/fiber'
 import CameraControls from "../canvas/cameraControls"
+import { Suspense } from 'react'
 
 function Loader() {
-  const { progress } = useProgress()
   return (
-    <Html center>{progress} % loaded</Html>
+    <div className='text-slate-900'></div>
   )
 }
 
@@ -22,8 +22,7 @@ function LCanvas({ children }) {
       onCreated={(state) => state.events.connect(dom.current)}
     >
       <Preload all/>
-      {children}
-      
+        {children}
     </Canvas>
   )
 }

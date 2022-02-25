@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import { Nav } from '@/components/dom/nav'
+import { Suspense } from 'react'
 
 const Project = dynamic(() => import('@/components/canvas/project'), {
   ssr: false,
@@ -25,11 +26,11 @@ const R3F = () => {
 
 const Page = () => {
   return (
-    <>
+    <Suspense fallback={console.log(1)}>
       <DOM />
       {/* @ts-ignore */}
       <R3F r3f />
-    </>
+    </Suspense>
   )
 }
 

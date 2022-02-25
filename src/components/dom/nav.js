@@ -12,8 +12,7 @@ export const Nav = () => {
   const ref = useRef()
 
   const selectProject = () => {
-    focusFirstProject()
-    console.log(1)
+    focusFirstProject() 
   }
   return (
     <nav className='flex flex-col'>
