@@ -8,28 +8,27 @@ const TorusComponent = ({ route }) => {
   const router = useRouterStore((s) => s.router)
   const mesh = useRef(null)
   const [hovered, setHover] = useState(false)
+  const opacity = useState(0.5)
   useFrame((state, delta) => {
       mesh.current
       ? (mesh.current.rotation.y = mesh.current.rotation.x += 0.01)
-      : null,
-      console.log(route, router)
+      : null
     }
   )
   return (
-    <>
+    
       <Torus
-        position={[ 0, 0, -100 ]}
+        position={[ 0, 0, 0 ]}
         ref={mesh}
-   
-        onClick={() => router.push('/123')}
-        onPointerOver={() => setHover(true)}
-        onPointerOut={() => setHover(false)}
+        onClick={() => router.push('/project')}
+        onPointerOver={() => console.log(111)}
+        onPointerOut={() => console.log(222)}
         scale={hovered ? 1.1 : 1}
         receiveShadow
         castShadow >
-        <meshStandardMaterial attach="material" color="white"/>
+        <meshStandardMaterial attach="material" color={[0,0,0]} />
       </Torus>
-    </>
+    
   )
 }
 export default TorusComponent

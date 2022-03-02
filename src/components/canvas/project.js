@@ -1,56 +1,42 @@
-import * as THREE from "three"
-import { Cylinder, Sphere, Scroll, ScrollControls } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { Scroll, Image, useTexture, Torus, ScrollControls, useIntersect, useAspect } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
+import { useRef } from 'react'
+import data from '@/components/canvas/data'
+import CameraControls from './cameraControls'
+import { motion as motion3d } from 'framer-motion'
+import Lights from '@/components/canvas/lights'
 
-import { useSceneStore } from '@/helpers/store'
-import Torus from "@/components/canvas/torus"
-import CameraControls from "./cameraControls"
-import { Perf } from "r3f-perf"
-
-import { motion as motion3d } from "framer-motion"
-
+const Grid = () => {
+  const { width: w, height: h } = useThree((state) => state.viewport)
+  const group = useRef()
+  return (
+    <group ref={group}>
+      <Image url={data[0]} scale={[w/2, h/2, 1]} alt='' />
+      <Image url={data[1]} scale={[w/2, h/2, 1]} alt='' />
+      <Image url={data[2]} scale={[w, h, 1]} position={[-w / 4, 0,  -h * 1]} alt=''/>
+      <Image url={data[3]} scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} alt='' />
+      <Image url={data[4]} scale={[w / 5, w / 5, 1]} position={[w / 10, -h * 1.75, 0]} alt=''/>
+      <Image url={data[5]} scale={[w / 3, w / 3, 1]} position={[-w / 4, -h * 2, 0]} alt=''/>
+      <Image url={data[6]} scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} alt=''/>
+      <Image url={data[7]} scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} alt=''/>
+      <Image url={data[8]} scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} alt=''/>
+    </group>
+  )
+}
 
 const Project = () => { 
-  
-  const isFirstProjectShow = useSceneStore(state => state.isFirstProjectShow)
-  const isSecondProjectShow = useSceneStore(state => state.isSecondProjectShow)
-  const isThirdProjectShow = useSceneStore(state => state.isThirdProjectShow)
-
-  useFrame(() => {
-    {isFirstProjectShow ? console.log(true) : console.log(false) }
-  })
+  const three = useThree()
   return(
     <>
       <CameraControls/>
-      <Perf/>
-      <ambientLight
-        intensity={0.1}
-      />
-      <directionalLight
-        intensity={0.5}
-        position={[2, 2, 0]}
-        castShadow
-        shadow-mapSize-height={512}
-        shadow-mapSize-width={512}
-      />
-      <pointLight
-        castShadow
-        intensity={0.2}
-        args={[0xff0000, 1, 100]}
-        position={[1, 1, 1]}
-      />
+      <Lights/>
       <ScrollControls
         pages={6} // Each page takes 100% of the height of the canvas
         distance={1} // A factor that increases scroll bar travel (default: 1)
         damping={1} // Friction, higher is faster (default: 4)
         >
         <Scroll>
-            { isFirstProjectShow ? <Sphere receiveShadow castShadow><meshStandardMaterial attach="material" color="white" /></Sphere> : setTimeout(() => {
-                console.log('yo!')
-              }, 1000)
-            }
-            { isSecondProjectShow ? <Torus/>  : <></> }
-            { isThirdProjectShow ? <Cylinder receiveShadow castShadow position={[ 0, 0, -200 ]}><meshStandardMaterial attach="material" color="white" /></Cylinder> : <></> }
+          <Grid/>
         </Scroll>
       </ScrollControls>
     </>

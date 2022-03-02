@@ -14,21 +14,18 @@ export const useSceneStore = create((set) => ({
   isThirdProjectShow: false,
 
   // Project
-  focusFirstProject: () => set(() => ({ 
-    cameraPosZ: 10, 
+  focusFirstProject: () => set(() => ({
     isFirstProjectShow: true,
     isSecondProjectShow: false,
     isThirdProjectShow: false,
 
   })),
   focusSecondProject: () => set(() => ({ 
-    cameraPosZ: -90, 
     isFirstProjectShow: false,
     isSecondProjectShow: true,
     isThirdProjectShow: false,
   })),
   focusThirdProject: () => set(() => ({
-    cameraPosZ: -190,
     isFirstProjectShow: false,
     isSecondProjectShow: false,
     isThirdProjectShow: true,

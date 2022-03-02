@@ -18,7 +18,7 @@ function MainCamera() {
   useFrame(() => {
     cameraRef.current.position.lerp( cameraPosV3, 0.04)
   })
-  return <PerspectiveCamera ref={cameraRef} makeDefault />
+  return <PerspectiveCamera ref={cameraRef} position={cameraPosV3} makeDefault />
 }
 
 export default function CameraControls() {

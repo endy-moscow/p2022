@@ -1,36 +1,34 @@
-import dynamic from 'next/dynamic'
 import { Nav } from '@/components/dom/nav'
-import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+import { Sphere } from '@react-three/drei'
+import useRouterStore from '@/helpers/store'
+import Torus from '@/components/canvas/torus'
 
-const Gallery = dynamic(() => import('@/components/canvas/gallery'), {
-  ssr: false,
-})
-
-const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
+const Project = dynamic(() => import('@/components/canvas/project'), {
   ssr: false,
 })
 
 const DOM = (state) => {
   return (
-    <Nav/>
+    <></>
   )
 }
 
 const R3F = () => {
   return (
     <>
-      <Gallery/>
+      <Project/>
     </>
   )
 }
 
 const Page = () => {
   return (
-    <Suspense fallback={console.log('Loading...')}>
+    <>
       <DOM />
       {/* @ts-ignore */}
       <R3F r3f />
-    </Suspense>
+    </>
   )
 }
 
@@ -39,7 +37,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Index',
+      title: 'Foo Title',
     },
   }
 }
