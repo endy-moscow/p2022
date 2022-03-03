@@ -6,7 +6,7 @@ export const useSceneStore = create((set) => ({
   // Camera position
   cameraPosX: 0,
   cameraPosY: 0,
-  cameraPosZ: 0,
+  cameraPosZ: 10,
   
   // Visability
   isFirstProjectShow: false,

@@ -12,7 +12,7 @@ const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
 
 const DOM = (state) => {
   return (
-    <Nav/>
+    <h1></h1>
   )
 }
 
