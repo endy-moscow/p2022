@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  body{background: #202025;}
   * {
     box-sizing: border-box;
   }
-  /* *::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     display: none;
-  } */
-  
+  }
   html,
   body,
   #__next {

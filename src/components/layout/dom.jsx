@@ -1,15 +1,14 @@
-import useStore from '@/helpers/store'
+import { useRouterStore } from '@/helpers/store'
 import { useEffect, useRef } from 'react'
 
 const Dom = ({ children }) => {
   const ref = useRef(null)
   useEffect(() => {
-    useStore.setState({ dom: ref })
+    useRouterStore.setState({ dom: ref })
   }, [])
-
   return (
     <div
-      className='absolute top-0 left-0 z-10 w-screen overflow-hidden dom'
+      className='absolute top-0 left-0 w-screen overflow-hidden dom'
       ref={ref}
     >
       {children}

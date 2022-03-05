@@ -1,23 +1,20 @@
-import { Nav } from '@/components/dom/nav'
 import dynamic from 'next/dynamic'
 import { Sphere } from '@react-three/drei'
-import useRouterStore from '@/helpers/store'
-import Torus from '@/components/canvas/torus'
 
-const Project = dynamic(() => import('@/components/canvas/project'), {
+const WordCloud = dynamic(() => import('@/components/canvas/wordCloud'), {
   ssr: false,
 })
 
 const DOM = (state) => {
   return (
-    <></>
+    <div>test</div>
   )
 }
 
 const R3F = () => {
   return (
     <>
-      <Project/>
+      <WordCloud/>
     </>
   )
 }

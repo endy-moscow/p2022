@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import useRouterStore from '@/helpers/store'
+import { useRouterStore } from '@/helpers/store'
 import { useEffect } from 'react'
 import Header from '@/config'
 import Dom from '@/components/layout/dom'

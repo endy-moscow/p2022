@@ -1,4 +1,3 @@
-import { useSceneStore } from '@/helpers/store'
 import { useRef } from "react"
 
 export const Nav = () => {

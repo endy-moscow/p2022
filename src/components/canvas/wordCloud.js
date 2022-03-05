@@ -1,33 +1,35 @@
 import * as THREE from 'three'
 import { useRef, useState, useMemo, useEffect } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Text } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import { Text, Billboard } from '@react-three/drei'
 import randomWord from 'random-words'
 
 function Word({ children, ...props }) {
   const color = new THREE.Color()
-  const fontProps = { font: '/fonts/Inter-Bold.woff', fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
+  const fontProps = { font: '/fonts/Inter-Bold.woff', fontSize: 1.0, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
   const ref = useRef()
   const [hovered, setHovered] = useState(false)
   const over = (e) => (e.stopPropagation(), setHovered(true))
   const out = () => setHovered(false)
-  // Change the mouse cursor on hover
   useEffect(() => {
-    if (hovered) console.log(1)
+    if (hovered)
     return () => (document.body.style.cursor = 'auto')
   }, [hovered])
-  // Tie component to the render-loop
   useFrame(({ camera }) => {
-    // Make text face the camera
-    ref.current.quaternion.copy(camera.quaternion)
-    // Animate font color
-    ref.current.material.color.lerp(color.set(hovered ? '#fa2720' : 'white'), 0.1)
+    if (ref.current) {
+      ref.current.quaternion.copy(camera.quaternion)
+    }
   })
-  return <Text ref={ref} onPointerOver={over} onPointerOut={out} {...props} {...fontProps}> {children} </Text>
+  return (
+    <Billboard ref={ref} >
+      <Text onPointerOver={over} onPointerOut={out} {...props} {...fontProps}> 
+        {children}
+      </Text>
+    </Billboard>
+  )
 }
 
-export default function Cloud({ count, radius }) {
-  // Create a count x count random words with spherical distribution
+function Cloud({ count, radius }) {
   const words = useMemo(() => {
     const temp = []
     const spherical = new THREE.Spherical()
@@ -38,5 +40,20 @@ export default function Cloud({ count, radius }) {
       for (let j = 0; j < count; j++) temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), randomWord()])
     return temp
   }, [count, radius])
-  return words.map(([pos, word], index) => <Word key={index} position={pos}>{word}</Word>)
+  return (
+    words.map(([pos, word], index) => ( <Word key={index} position={pos}> {word} </Word> ))  
+  )
+}
+
+export default function WorldCloud() {
+  const ref = useRef()
+  useFrame(() => {
+    // ref.current.rotation.x += 0.01
+  })
+  return (
+    <group ref={ref} position={[0,0,0]}>
+      <fog attach="fog" args={['#000000', 0, 80]} />
+      <Cloud count={9} radius={9} />
+    </group>
+  )
 }

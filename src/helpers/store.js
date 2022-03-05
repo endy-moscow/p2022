@@ -1,12 +1,12 @@
 import create from 'zustand'
 
 // Scene store
-export const useSceneStore = create((set) => ({
+const useSceneStore = create((set) => ({
 
   // Camera position
   cameraPosX: 0,
   cameraPosY: 0,
-  cameraPosZ: 10,
+  cameraPosZ: 20,
   
   // Visability
   isFirstProjectShow: false,
@@ -41,4 +41,4 @@ const useRouterStore = create(() => {
   }
 })
 
-export default useRouterStore
+export { useRouterStore, useSceneStore }
